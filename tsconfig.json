@@ -1,0 +1,16 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    // Specify explicitly (don’t derive from source file paths):
+    "rootDir": "src",
+    "outDir": "dist",
+    "target": "ES2023",
+    "module": "Node16",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
+    "isolatedDeclarations": true
+  }
+}
