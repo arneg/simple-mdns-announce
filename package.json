@@ -1,5 +1,5 @@
 {
-  "name": "@arneg/simple-mdns-announce",
+  "name": "simple-mdns-announce",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

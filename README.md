@@ -9,7 +9,7 @@ This Node.js module allows you to announce mDNS services on macOS and Windows us
 You can install the module via npm:
 
 ```bash
-npm install "@arneg/simple-mdns-announce"
+npm install "simple-mdns-announce"
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ This module exposes a simple API to announce services over mDNS.
 API
 
 ```typescript
-import { announceService } from "@arneg/simple-mdns-announce";
+import { announceService } from "simple-mdns-announce";
 
 const service = {
   name: "MyService",
