@@ -14,6 +14,8 @@
   "author": "Arne Goedeke",
   "license": "MIT",
   "type": "module",
+  "repository": "github:arneg/simple-mdns-announce",
+  "homepage": "https://github.com/arneg/simple-mdns-announce",
   "files": [
     "package.json",
     "README.md",
