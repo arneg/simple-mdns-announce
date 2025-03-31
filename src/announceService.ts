@@ -16,7 +16,7 @@ const log = debug("simple-mdns-announce");
 export type IService = {
   /** The name of the service. */
   name: string;
-  /** The type of the service (e.g., _http._tcp.). */
+  /** The type of the service (e.g., _http._tcp). */
   type: string;
   /** Optional. The subtype of the service. */
   subtype?: string;

@@ -22,7 +22,7 @@ import { announceService } from "@arneg/simple-mdns-announce";
 
 const service = {
   name: "MyService",
-  type: "_http._tcp.",
+  type: "_http._tcp",
   port: 8080,
   txtRecords: {
     description: "My awesome service",
