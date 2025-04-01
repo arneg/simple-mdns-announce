@@ -26,6 +26,14 @@ export type IService = {
   txtRecords?: ITxtRecords;
 };
 
+function appendTxtRecords(args: string[], service: IService) {
+  if (service.txtRecords) {
+    for (const name in service.txtRecords) {
+      args.push(`${name}=${service.txtRecords[name]}`);
+    }
+  }
+}
+
 function getCommandLine(service: IService): [string, string[]] {
   let cmd: string;
   let args: string[];
@@ -42,11 +50,7 @@ function getCommandLine(service: IService): [string, string[]] {
         "",
         "",
       ];
-      if (service.txtRecords) {
-        for (const name in service.txtRecords) {
-          args.push(`${name}=${service.txtRecords[name]}`);
-        }
-      }
+      appendTxtRecords(args, service);
       break;
     }
     case "win32":
@@ -58,11 +62,22 @@ function getCommandLine(service: IService): [string, string[]] {
         "local",
         service.port.toFixed(0),
       ];
-      if (service.txtRecords) {
-        for (const name in service.txtRecords) {
-          args.push(`${name}=${service.txtRecords[name]}`);
-        }
+      appendTxtRecords(args, service);
+      break;
+    case "linux":
+      cmd = "avahi-publish";
+      args = [
+        '-s',
+      ];
+      if (service.subtype) {
+        args.push('--subtype', `${service.subtype}._sub.${service.type}`);
       }
+      args.push(
+        service.name,
+        service.type,
+        service.port.toFixed(0)
+      );
+      appendTxtRecords(args, service);
       break;
     default:
       throw unsupportedPlatformError();
