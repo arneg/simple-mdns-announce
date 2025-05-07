@@ -47,8 +47,6 @@ function getCommandLine(service: IService): [string, string[]] {
         composeTypeAndSubtype(service.type, service.subtype),
         "local",
         service.port.toFixed(0),
-        "",
-        "",
       ];
       appendTxtRecords(args, service);
       break;
