@@ -85,14 +85,24 @@ function getCommandLine(service: IService): [string, string[]] {
  *  The service to announce.
  * @returns
  */
-export function announceService(service: IService): () => void {
+export function announceService(
+  service: IService,
+  onError?: (err: Error) => void
+): () => void {
   const [executable, args] = getCommandLine(service);
+
+  if (!onError)
+    onError = (err: Error) => {
+      log("Error: ", err);
+    };
 
   log("spawn %s %o", executable, args);
   const process = spawn(executable, args, {
     windowsHide: true,
     stdio: "ignore",
   });
+
+  process.on("error", onError);
 
   return () => {
     log("kill %s %o", executable, args);

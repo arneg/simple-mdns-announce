@@ -29,7 +29,9 @@ const service = {
   },
 };
 
-const cleanup = announceService(service);
+const cleanup = announceService(service, (error) => {
+  console.error("Creating announcement failed: ", error);
+});
 
 // To stop the service announcement
 cleanup();
