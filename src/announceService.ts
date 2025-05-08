@@ -79,10 +79,15 @@ function getCommandLine(service: IService): [string, string[]] {
 }
 
 /**
- * This function announces a service over mDNS. You pass an IService object with the service details. The function returns a cleanup handle that you can call to stop the service announcement and kill the underlying dns-sd process.
+ * This function announces a service over mDNS. You pass an IService object with
+ * the service details. The function returns a cleanup handle that you can call
+ * to stop the service announcement and kill the underlying dns-sd process.
  *
  * @param service
  *  The service to announce.
+ * @param onError
+ *  An optional error handler. It is used as event handler for the 'error' event
+ *  on the spawned child process.
  * @returns
  */
 export function announceService(
